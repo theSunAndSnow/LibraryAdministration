@@ -60,3 +60,29 @@
 
 [IDEA 部署Web项目，解决 404 错误](https://blog.csdn.net/eaphyy/article/details/72513914)
 
+
+
+## 问题2
+
+在测试 JDBCTools 类时抛出这样的异常
+
+```
+"C:\Program Files\Java\jdk1.8.0_144\bin\java.exe" -
+
+Connected to the target VM, address: '127.0.0.1:30637', transport: 'socket'
+java.lang.NoClassDefFoundError: com/mchange/v2/ser/Indirector
+	at com.theSunAndSnow.utils.JDBCTools.<clinit>(JDBCTools.java:16)
+Caused by: java.lang.ClassNotFoundException: com.mchange.v2.ser.Indirector
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:381)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:335)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	... 1 more
+Disconnected from the target VM, address: '127.0.0.1:30637', transport: 'socket'
+Exception in thread "main" 
+Process finished with exit code 1
+```
+
+原因是我只导入了 c3p0-0.9.5.5.jar 包，没有导入mchange-commons-java-0.2.19……
+
+![image-20200508085806549](README.assets/image-20200508085806549.png)

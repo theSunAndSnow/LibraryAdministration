@@ -44,6 +44,5 @@ public class JDBCTools {
      */
     public static void main(String[] args) {
         System.out.println(JDBCTools.getConncetion());
-        System.out.println("httll");
     }
 }
