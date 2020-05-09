@@ -57,6 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
+  <%--分页操作：将常用的 HTML 部分直接分出来，提升代码复用性--%>
   <%@ include file="top.jsp" %>
 
   	<div id="main">
@@ -107,7 +108,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		
 	</div>
-  	
+  	<%--分页操作，提升 footer 部分代码的复用性--%>
    <%@ include file="footer.jsp" %>
   </body>
 </html>

@@ -46,7 +46,8 @@ public class LoginServlet extends HttpServlet {
                     Reader reader = (Reader) object;
                     session.setAttribute("reader", reader);
                     // 跳转到读者首页
-                    req.getRequestDispatcher("")
+                    req.getRequestDispatcher("index.jsp").forward(req, resp);
+
                     break;
 
                 case "admin":
