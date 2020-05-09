@@ -1,4 +1,4 @@
-// 解决中文乱码问题
+<%--解决中文乱码问题--%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page isELIgnored="false" %>
@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					return;
 				}
 				page++;
-				location.href = "/book?page="+page;
+				location.href = "/book?page="+page;// 通过 js 去访问后台
 			})
 
 			$("#previous").click(function () {
@@ -84,13 +84,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 			<c:forEach items="${list}" var="book">
 				<tr>
+					<%--
+						底层内部这些点运算符都在调用 get 方法
+						所以没有相应的 get 方法一定会报错 500
+					--%>
 					<td>${book.id}</td>
 					<td>${book.name}</td>
 					<td>${book.author}</td>
 					<td>${book.publish}</td>
 					<td>${book.pages}</td>
 					<td>${book.price}</td>
-					<td>${book.bookCase.name}</td>
+					<td>${book.bookSort.name}</td>
 					<td>
 						<a href="/book?method=addBorrow&bookid=${book.id}">借阅</a>
 					</td>
@@ -100,10 +104,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</table>
 		<hr class="hr"/>
 		<div id="pageControl">
-			<div class="pageControl_item">每页<font id="dataPrePage">${dataPrePage }</font>条数据</div>
+			<div class="pageControl_item">每页<font id="dataPrePage">${dataPrePage}</font>条数据</div>
 			<div class="pageControl_item" id="last">最后一页</div>
 			<div class="pageControl_item" id="next">下一页</div>
-			<div class="pageControl_item"><font id="currentPage">${currentPage }</font>/<font id="pages">${pages }</font></div>
+			<div class="pageControl_item"><font id="currentPage">${currentPage}</font>/<font id="pages">${pages }</font></div>
 			<div class="pageControl_item" id="previous">上一页</div>
 			<div class="pageControl_item" id="first">首页</div>
 		</div>
