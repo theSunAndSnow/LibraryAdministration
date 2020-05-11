@@ -41,28 +41,31 @@ public class LoginServlet extends HttpServlet {
                 password = req.getParameter("password");
         String type = req.getParameter("type");
 
+//        向数据库验证用户名和密码
         Object object = loginService.login(username, password, type);
 
-        if (object == null) {
+        if (object == null) { // 若密码错误，返回 null
             resp.sendRedirect("login.jsp");
-        } else {
+        } else { // 若密码正确
             HttpSession session = req.getSession();
             switch (type) {
                 case "reader":
-                    Reader reader = (Reader) object;
+                    Reader reader = (Reader) object; // 将返回的 Object 类强制类型转化为 Reader
                     session.setAttribute("reader", reader);
 
-                    // 跳转到读者首页
-                    List<Book> list = bookService.findAll(1);
-                    req.setAttribute("list", list); // 给用户展示的集合
-                    req.setAttribute("dataPrePage", 3); // 表示每页多少条数据
-                    req.setAttribute("currentPage", 1); // 提示用户当前在第几页
-                    req.setAttribute("pages", bookService.getPages()); // 提示用户一共有多少页
-                    req.getRequestDispatcher("index.jsp").forward(req, resp);
+                    // 跳转到读者首页，因为高度耦合，所以需要 解耦
+//                    List<Book> list = bookService.findAll(1);
+//                    req.setAttribute("list", list); // 给用户展示的集合
+//                    req.setAttribute("dataPrePage", 3); // 表示每页多少条数据
+//                    req.setAttribute("currentPage", 1); // 提示用户当前在第几页
+//                    req.setAttribute("pages", bookService.getPages()); // 提示用户一共有多少页
+//                    req.getRequestDispatcher("index.jsp").forward(req, resp);
+
+                    resp.sendRedirect("/book?page=1"); // 利用重定向解耦
                     break;
 
                 case "admin":
-                    Admin admin = (Admin) object;
+                    Admin admin = (Admin) object; // 将返回的 Object 类强制类型转化为 Reader
                     session.setAttribute("admin", admin);
 //                    跳转到管理员首页
                     break;
