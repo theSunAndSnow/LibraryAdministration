@@ -1,5 +1,13 @@
 # README
 
+## 涉及到的新类
+
+`SimpleDateFormat `利用此类来将 Date 日期转化为想要的格式（MySQL 中的 datetime 格式）。[SimpleDateFormat使用方法](https://www.cnblogs.com/yjhrem/articles/2419717.html)
+
+`Calender`使用 Calender 的 set 与 get 方法来进行日期运算。类似2020/5/11 之后的第200天的具体日期是多少。[Calender 的 set 与 get 方法](https://blog.csdn.net/huawangxin/article/details/53232531)
+
+
+
 ## 流程
 
 用户产生登陆请求，被 controller 利用 servlet 技术捕获，实现 servlet 的类将请求传递给 service 层中的 LoginServiceImpl，service 层再将请求传递给 repository 层中的 ReaderRepositoryImpl 类，ReaderRepositoryImpl 类直接与数据库进行交互。

@@ -8,4 +8,5 @@ public interface BookRepository {
     public List<Book> findAll(int index, int length);
 
     public int getCount();
+
 }

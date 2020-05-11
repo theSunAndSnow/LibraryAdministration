@@ -51,7 +51,7 @@ public class LoginServlet extends HttpServlet {
             switch (type) {
                 case "reader":
                     Reader reader = (Reader) object; // 将返回的 Object 类强制类型转化为 Reader
-                    session.setAttribute("reader", reader);
+                    session.setAttribute("reader", reader); // 将 reader 保存到 session 中
 
                     // 跳转到读者首页，因为高度耦合，所以需要 解耦
 //                    List<Book> list = bookService.findAll(1);

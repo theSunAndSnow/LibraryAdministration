@@ -21,4 +21,6 @@ public interface BookService {
      * @return 返回当前页码
      */
     public int getPages();
+
+    public void addBorrow(Integer bookid, Integer readerid);
 }
