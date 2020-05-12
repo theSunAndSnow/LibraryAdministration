@@ -5,6 +5,11 @@ public class Reader {
     private String username;
     private String password;
     private String name;
+
+    public Reader(String name) {
+        this.name = name;
+    }
+
     private String telephone;
     private String cardid;
     private String gender;

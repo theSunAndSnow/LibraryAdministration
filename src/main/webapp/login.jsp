@@ -9,13 +9,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>登录</title>
 </head>
-<link rel="icon" href="../../../web/images/search.gif" type="img/x-ico" />
-<link href="../../../web/css/login.css" type="text/css" rel="stylesheet">
+<link rel="icon" href="../images/search.gif" type="img/x-ico" />
+<link href="../css/login.css" type="text/css" rel="stylesheet">
 <script type="text/javascript" src="<%=path%>/js/jquery-3.3.1.min.js"></script>
 <body>
 	<div id="top"></div> 
 	<div id="main">
-		<img src="../../../web/images/login.jpg" id="main_bg"/>
+		<img src="images/login.jpg" id="main_bg"/>
 		<div id="login_block">
 			<form action="/login" method="post" id="loginForm">
 				<table border="0">

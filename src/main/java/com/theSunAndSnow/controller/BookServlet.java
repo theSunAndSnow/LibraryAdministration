@@ -2,6 +2,7 @@ package com.theSunAndSnow.controller;
 
 
 import com.theSunAndSnow.entity.Book;
+import com.theSunAndSnow.entity.Borrow;
 import com.theSunAndSnow.entity.Reader;
 import com.theSunAndSnow.service.BookService;
 import com.theSunAndSnow.service.impl.BookServiceImpl;
@@ -54,10 +55,11 @@ public class BookServlet extends HttpServlet {
                 bookService.addBorrow(bookid, readid);
 
 //                展示当前用户的所有借书记录
-
+                List<Borrow> listBorrow = bookService.findAllBorrowByReaderId(reader.getId());
+                req.setAttribute("list", listBorrow);
+                req.getRequestDispatcher("borrow.jsp").forward(req, resp);
                 break;
         }
-
 
     }
 }

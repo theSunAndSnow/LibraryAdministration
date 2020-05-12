@@ -2,7 +2,8 @@
 
 <c3p0-config>
     <named-config name="library">
-        jdbc:mysql://localhost:3306/library
+
+        <!--jdbc:mysql://localhost:3306/library-->
         <property name="jdbcUrl">jdbc:mysql://localhost:3306/library?useUnicode=true;characterEncoding=UTF-8</property>
         <property name="user">root</property>
         <property name="password">18325379510</property>

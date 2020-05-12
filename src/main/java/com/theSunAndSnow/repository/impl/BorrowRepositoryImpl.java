@@ -1,5 +1,8 @@
 package com.theSunAndSnow.repository.impl;
 
+import com.theSunAndSnow.entity.Book;
+import com.theSunAndSnow.entity.Borrow;
+import com.theSunAndSnow.entity.Reader;
 import com.theSunAndSnow.repository.BorrowRepository;
 import com.theSunAndSnow.utils.JDBCTools;
 
@@ -7,6 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BorrowRepositoryImpl implements BorrowRepository {
     @Override
@@ -36,5 +41,47 @@ public class BorrowRepositoryImpl implements BorrowRepository {
         }
 
 
+    }
+
+    @Override
+    public List<Borrow> findAllByReaderId(Integer readerId) {
+        ArrayList<Borrow> list = new ArrayList<Borrow>();
+        Connection connection = JDBCTools.getConncetion();
+        String sql = "select borrow.id, reader.name, book.name as book, book.author,\n" +
+                "       book.publish, borrowtime, returntime, borrow.state\n" +
+                "from borrow, book, reader\n" +
+                "where readerid = ?\n" +
+                "and bookid = book.id\n" +
+                "and readerid = reader.id;";
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, readerId);
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+//                优化内存栈
+                list.add(new Borrow(
+                        resultSet.getInt("id"),
+                        new Book(resultSet.getString("book"), resultSet.getString("author"), resultSet.getString("publish")),
+                        new Reader(resultSet.getString("name")),
+                        resultSet.getString("borrowtime"),
+                        resultSet.getString("returntime"),
+                        resultSet.getInt("state")
+                ));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                JDBCTools.release(connection, preparedStatement, resultSet);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return list;
     }
 }

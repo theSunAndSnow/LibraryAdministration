@@ -1,6 +1,7 @@
 package com.theSunAndSnow.service;
 
 import com.theSunAndSnow.entity.Book;
+import com.theSunAndSnow.entity.Borrow;
 
 import java.util.List;
 
@@ -23,4 +24,6 @@ public interface BookService {
     public int getPages();
 
     public void addBorrow(Integer bookid, Integer readerid);
+
+    public List<Borrow> findAllBorrowByReaderId(Integer readerId);
 }

@@ -1,6 +1,7 @@
 package com.theSunAndSnow.service.impl;
 
 import com.theSunAndSnow.entity.Book;
+import com.theSunAndSnow.entity.Borrow;
 import com.theSunAndSnow.repository.BookRepository;
 import com.theSunAndSnow.repository.BorrowRepository;
 import com.theSunAndSnow.repository.impl.BookRepositoryImpl;
@@ -8,6 +9,7 @@ import com.theSunAndSnow.repository.impl.BorrowRepositoryImpl;
 import com.theSunAndSnow.service.BookService;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -59,5 +61,12 @@ public class BookServiceImpl implements BookService {
         String returnTime = simpleDateFormat.format(returnDate);
 
         borrowRepository.insert(readerId, bookId, borrowTime, returnTime, null, 0); // 定义成包装类的好处就体现了
+
     }
+
+    @Override
+    public List<Borrow> findAllBorrowByReaderId(Integer readerId) {
+        return borrowRepository.findAllByReaderId(readerId);
+    }
+
 }

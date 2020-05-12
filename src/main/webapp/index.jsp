@@ -22,9 +22,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-	<link href="../../../web/css/index.css" type="text/css" rel="stylesheet">
+	<link href="css/index.css" type="text/css" rel="stylesheet">
 	 
-  	<script type="text/javascript" src="../../../web/js/jquery-3.3.1.min.js"></script>
+  	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
   	<script type="text/javascript">
 		$(function(){
 			$("#next").click(function(){
@@ -68,7 +68,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div id="readerBlock">欢迎回来&nbsp;:<a href="/book?method=findAllBorrow&page=1">${sessionScope.reader.name }</a>&nbsp;<a href="/logout">注销</a></div>
 		</div>
 		<div class="img_block">
-			<img src="../../../web/images/main_booksort.gif" class="img" />
+			<img src="images/main_booksort.gif" class="img" />
 		</div>
 		
 		<table class="table" cellspacing="0">

@@ -19,6 +19,12 @@ public class Book {
     public Book() {
     }
 
+    public Book(String name, String author, String publish) {
+        this.name = name;
+        this.author = author;
+        this.publish = publish;
+    }
+
     public Book(Integer id, String name, String author, String publish, Integer pages, Double price, BookSort bookSort) {
         this.id = id;
         this.name = name;
