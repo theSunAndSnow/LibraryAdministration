@@ -18,7 +18,7 @@ public class BookServiceImpl implements BookService {
 
     private BookRepository bookRepository = new BookRepositoryImpl();
     private BorrowRepository borrowRepository = new BorrowRepositoryImpl();
-    private final int LENGTH = 3;
+    private final int LENGTH = 6;
 
     @Override
     public List<Book> findAll(int page) {
